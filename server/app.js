@@ -1,12 +1,16 @@
 const express = require('express');
+const path = require('path');
+const { spawn } = require('child_process');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post('/', (req, res) => {
-  const python = spawn('py', ['./scripts/youtube-downloader.py', req.body.url]);
+app.use(express.static(path.join('..', '/client/build')));
+
+app.post('/api/youtube', (req, res) => {
+  const python = spawn('python', ['./scripts/youtube-downloader.py', req.body.url]);
   
   let data = '';
   
@@ -15,8 +19,9 @@ app.post('/', (req, res) => {
   });
   
   python.on('close', () => {
+    console.log(data);
     res.json(JSON.parse(data));
-  })
+  });
   
   python.on('error', (err) => {
     console.error(err);

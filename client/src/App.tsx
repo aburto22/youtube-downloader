@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div className="App">
       <Form setUrl={setUrl} />
-      <Audio url={url} />
+      {url && <Audio url={url} />}
     </div>
   );
 };
