@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Form from './Form';
+import Audio from './Audio';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [url, setUrl] = useState('');
+
   return (
     <div className="App">
-      <p>I am live</p>
+      <Form setUrl={setUrl} />
+      <Audio url={url} />
     </div>
   );
-}
+};
 
 export default App;

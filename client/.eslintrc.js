@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es2021: true,
@@ -14,23 +15,22 @@ module.exports = {
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: `${__dirname}/'tsconfig.json')`,
+    tsconfigRootDir: __dirname,
+    project: 'tsconfig.json',
   },
   plugins: [
     'react',
     '@typescript-eslint',
   ],
   rules: {
-    rules: {
-      "import/prefer-default-export": 0,
-      "react/function-component-definition": [
-        2,
-        {
-          namedComponents: "arrow-function",
-          unnamedComponents: "arrow-function",
-        },
-      ],
-    },
+    "import/prefer-default-export": 0,
+    "react/function-component-definition": [
+      2,
+      {
+        namedComponents: "arrow-function",
+        unnamedComponents: "arrow-function",
+      },
+    ],
   },
   ignorePatterns: ["build/", "node_modules/", ".eslintrc.js"],
 };
