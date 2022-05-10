@@ -1,12 +1,14 @@
-FROM node:16.15
+FROM node:16
 
 RUN apt-get update 
 
-RUN apt-get install python -y
+RUN apt-get upgrade -y
+
+RUN apt-get install python3 -y
 
 RUN apt-get install python3-pip -y
 
-RUN python3 -m pip install pytube
+RUN pip3 install pytube
 
 WORKDIR /app/client
 

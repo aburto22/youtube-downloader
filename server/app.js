@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join('..', '/client/build')));
 
 app.post('/api/youtube', (req, res) => {
-  const python = spawn('python', ['./scripts/youtube-downloader.py', req.body.url]);
+  const python = spawn('python3', ['./scripts/youtube-downloader.py', req.body.url]);
   
   let data = '';
   
@@ -19,7 +19,6 @@ app.post('/api/youtube', (req, res) => {
   });
   
   python.on('close', () => {
-    console.log(data);
     res.json(JSON.parse(data));
   });
   
