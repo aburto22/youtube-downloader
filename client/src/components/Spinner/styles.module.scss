@@ -1,0 +1,19 @@
+@import '../../variables.scss';
+
+.spinner {
+  border-radius: 50%;
+  border: 5px solid $orange-yellow;
+  border-top: 5px solid $baby-powder;
+  height: 1.5rem;
+  width: 1.5rem;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  50% {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

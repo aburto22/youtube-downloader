@@ -1,0 +1,52 @@
+@import '../../variables.scss';
+
+.form {
+  margin: 0 auto 1rem;
+  max-width: 20rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.labelText {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.submitButton {
+  display: block;
+  padding: 0.5rem 1rem;
+  background-color: $teal;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  height: 3rem;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submitButtonActive:hover {
+  color: $teal;
+  background-color: rgb(233, 233, 233);
+  border: 2px solid $teal;
+  font-weight: 600;
+}
+
+.submitButtonDisabled {
+  opacity: 0.8;
+  cursor: default;
+}

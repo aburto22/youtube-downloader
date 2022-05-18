@@ -3,11 +3,12 @@ import Form from './components/Form';
 import Audio from './components/Audio';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { ISong } from './types';
 import styles from './App.module.scss';
 
 const App = () => {
   const [url, setUrl] = useState('');
-  const [song, setSong] = useState(null);
+  const [song, setSong] = useState<ISong | null>({ title: 'text', src: 'test' });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -17,6 +18,8 @@ const App = () => {
       }
 
       setLoading(true);
+
+      // setTimeout(() => setLoading(false), 2000);
 
       const data = await fetch('/api/youtube/test', {
         method: 'POST',
@@ -44,17 +47,13 @@ const App = () => {
     <div className={`App ${styles.app}`}>
       <Header />
       <main className={styles.main}>
-        {song ? (
-          <>
-            <Audio song={song} />
-            <button type="button" onClick={handleClick}>Convert another song</button>
-          </>
-        ) : (
-          <>
-            <Form setUrl={setUrl} />
-            {loading && <p>Loading...</p>}
-          </>
-        )}
+        <section className={styles.section}>
+          {song ? (
+            <Audio song={song} handleClick={handleClick} />
+          ) : (
+            <Form setUrl={setUrl} loading={loading} />
+          )}
+        </section>
       </main>
       <Footer />
     </div>

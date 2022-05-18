@@ -1,5 +1,26 @@
+@import './variables.scss';
+
 .app {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0.5rem;
+}
+
+.section {
+  background-color: $orange-yellow;
+  width: 40rem;
+  max-width: 100%;
+  padding: 3rem 1rem;
+}
+
+.loadingText {
+  text-align: center;
 }

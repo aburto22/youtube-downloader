@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import Spinner from '../Spinner';
+import styles from './styles.module.scss';
 
 interface FormProps {
   setUrl: React.Dispatch<React.SetStateAction<string>>;
+  loading: boolean;
 }
 
-const Form = ({ setUrl }: FormProps) => {
+const Form = ({ setUrl, loading }: FormProps) => {
   const [input, setInput] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,9 +21,19 @@ const Form = ({ setUrl }: FormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="url" value={input} onChange={handleChange} />
-      <button type="submit">Get song</button>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <h2 className={styles.title}>Convert song</h2>
+      <label htmlFor="url">
+        <p className={styles.labelText}>Youtube link:</p>
+        <input type="text" name="url" value={input} onChange={handleChange} className={styles.input} />
+      </label>
+      <button
+        type="submit"
+        className={`${styles.submitButton} ${loading ? styles.submitButtonDisabled : styles.submitButtonActive}`}
+        disabled={loading}
+      >
+        {loading ? <Spinner /> : 'Get Song'}
+      </button>
     </form>
   );
 };
