@@ -3,13 +3,13 @@
 .title {
   text-align: center;
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-weight: 600;
 }
 
 .audio {
   display: block;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 2rem;
 }
 
 .downloadLink {
@@ -21,6 +21,7 @@
   border: 2px solid transparent;
   width: max-content;
   margin-bottom: 0.5rem;
+  color: $baby-powder;
 }
 
 .downloadLink:hover {

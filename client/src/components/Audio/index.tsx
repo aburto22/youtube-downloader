@@ -8,15 +8,19 @@ interface AudioProps {
   handleClick: () => void;
 }
 
-const Audio = ({ song, handleClick }: AudioProps) => (
-  <>
-    <h2 className={styles.title}>{song.title}</h2>
-    <audio controls className={styles.audio}>
-      <source src={song.src} />
-    </audio>
-    <a href={song.src} download={song.title} className={styles.downloadLink}>Download song</a>
-    <button type="button" onClick={handleClick} className={styles.restartButton}>Convert another song</button>
-  </>
-);
+const Audio = ({ song, handleClick }: AudioProps) => {
+  const title = song.title.split('.').slice(0, -1).join('');
+
+  return (
+    <>
+      <h2 className={styles.title}>{title}</h2>
+      <audio controls className={styles.audio}>
+        <source src={song.src} />
+      </audio>
+      <a href={song.src} download={song.title} className={styles.downloadLink}>Download song</a>
+      <button type="button" onClick={handleClick} className={styles.restartButton}>Convert another song</button>
+    </>
+  );
+};
 
 export default Audio;

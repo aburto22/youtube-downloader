@@ -7,7 +7,7 @@
 
 .title {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
   font-weight: 600;
 }
@@ -23,12 +23,13 @@
   padding: 0.4rem 0.8rem;
   border-radius: 0.2rem;
   margin-bottom: 1.5rem;
+  border: 1px solid $baby-powder;
 }
 
 .submitButton {
   display: block;
   padding: 0.5rem 1rem;
-  background-color: $teal;
+  background-color: $yale-blue;
   margin: 0 auto;
   border-radius: 0.5rem;
   border: 2px solid transparent;
@@ -37,13 +38,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: $baby-powder;
 }
 
 .submitButtonActive:hover {
-  color: $teal;
-  background-color: rgb(233, 233, 233);
-  border: 2px solid $teal;
-  font-weight: 600;
+  opacity: 0.9;
 }
 
 .submitButtonDisabled {

@@ -17,7 +17,6 @@ const Form = ({ setUrl, loading }: FormProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setUrl(input);
-    setInput('');
   };
 
   return (
@@ -25,7 +24,15 @@ const Form = ({ setUrl, loading }: FormProps) => {
       <h2 className={styles.title}>Convert song</h2>
       <label htmlFor="url">
         <p className={styles.labelText}>Youtube link:</p>
-        <input type="text" name="url" value={input} onChange={handleChange} className={styles.input} />
+        <input
+          type="text"
+          name="url"
+          value={input}
+          onChange={handleChange}
+          className={styles.input}
+          disabled={loading}
+          required
+        />
       </label>
       <button
         type="submit"
