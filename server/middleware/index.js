@@ -12,7 +12,7 @@ const validateUrl = (req, res, next) => {
     return;
   }
 
-  const youtubeRegex = /(?:https?:\/\/)?(www\.)?youtube\.com\/watch\?.*v=[A-Za-z]+(?:&|\b)/;
+  const youtubeRegex = /(?:https?:\/\/)?(www\.)?youtube\.com\/watch\?(?:.*&)?v=-?[A-Za-z0-9]+(?:&|\b)/;
 
   if (!youtubeRegex.test(url)) {
     const json = {
