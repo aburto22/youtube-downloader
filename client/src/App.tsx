@@ -10,6 +10,12 @@ const App = () => {
 
   useEffect(() => {
     const fetchSong = async () => {
+      if (!url) {
+        return;
+      }
+
+      setLoading(true);
+
       const data = await fetch('/api/youtube/test', {
         method: 'POST',
         headers: {
@@ -23,10 +29,7 @@ const App = () => {
       setLoading(false);
     };
 
-    if (url) {
-      setLoading(true);
-      fetchSong();
-    }
+    fetchSong();
   }, [url]);
 
   const handleClick = () => {
