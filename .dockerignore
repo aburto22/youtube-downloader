@@ -1,4 +1,4 @@
 ./client/build
 ./client/node_modules
-./server/.venv
+./python/.venv
 ./server/node_modules
