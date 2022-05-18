@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Form from './components/Form';
 import Audio from './components/Audio';
-import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import styles from './App.module.scss';
 
 const App = () => {
   const [url, setUrl] = useState('');
@@ -39,18 +41,22 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      {song ? (
-        <>
-          <Audio song={song} />
-          <button type="button" onClick={handleClick}>Convert another song</button>
-        </>
-      ) : (
-        <>
-          <Form setUrl={setUrl} />
-          {loading && <p>Loading...</p>}
-        </>
-      )}
+    <div className={`App ${styles.app}`}>
+      <Header />
+      <main className={styles.main}>
+        {song ? (
+          <>
+            <Audio song={song} />
+            <button type="button" onClick={handleClick}>Convert another song</button>
+          </>
+        ) : (
+          <>
+            <Form setUrl={setUrl} />
+            {loading && <p>Loading...</p>}
+          </>
+        )}
+      </main>
+      <Footer />
     </div>
   );
 };

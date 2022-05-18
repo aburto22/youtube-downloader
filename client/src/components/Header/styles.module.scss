@@ -1,0 +1,22 @@
+@import '../../variables.scss';
+
+.header {
+  background-color: $orange-yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.text {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.2rem;
+}
