@@ -5,11 +5,15 @@ import styles from './styles.module.scss';
 
 interface AudioProps {
   song: ISong;
-  handleClick: () => void;
+  setSong: React.Dispatch<React.SetStateAction<ISong | null>>;
 }
 
-const Audio = ({ song, handleClick }: AudioProps) => {
+const Audio = ({ song, setSong }: AudioProps) => {
   const title = song.title.split('.').slice(0, -1).join('');
+
+  const handleClick = () => {
+    setSong(null);
+  };
 
   return (
     <>

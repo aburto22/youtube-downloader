@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const { spawn } = require('child_process');
 const { handleError } = require('./lib');
+const { validateUrl } = require('./middleware');
 
 const app = express();
 
@@ -10,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join('..', '/client/build')));
 
-app.post('/api/youtube/test', (req, res) => {
+app.post('/api/youtube/test', validateUrl, (req, res) => {
   setTimeout(() => res.json({ title: 'test', src: 'src' }), 2000);
 });
 
