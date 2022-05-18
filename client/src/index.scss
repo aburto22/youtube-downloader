@@ -12,8 +12,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $yale-blue;
   color: $dark-gray;
+  background: radial-gradient(circle at 50% 60%, $yale-blue-lighter 20%, $yale-blue);
+  background-image: $bg-pattern;
+  background-color: $yale-blue;
 }
 
 button {

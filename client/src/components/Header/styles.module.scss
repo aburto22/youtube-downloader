@@ -1,16 +1,16 @@
 @import '../../variables.scss';
 
 .header {
-  background-color: $orange-yellow;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 2.5rem 1.5rem 1.5rem;
+  color: $baby-powder;
 }
 
 .title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 2.2rem;
   margin-bottom: 0.5rem;
 }
@@ -18,5 +18,15 @@
 .text {
   text-align: center;
   font-style: italic;
-  font-size: 1.2rem;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 25rem) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .text {
+    font-size: 1.2rem;
+  }
 }
