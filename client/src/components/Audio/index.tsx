@@ -1,8 +1,8 @@
-/* eslint-disable jsx-a11y/media-has-caption */
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { ISong } from '../../types';
 import DownloadAudio from '../DownloadAudio';
 import EditAudioForm from '../EditAudioForm';
+import AudioPlayer from '../AudioPlayer';
 import styles from './styles.module.scss';
 
 interface AudioProps {
@@ -17,15 +17,13 @@ const Audio = ({ song, setSong }: AudioProps) => {
     setSong(null);
   };
 
-  const src = `data:audio/mp3;base64,${song.base64}`;
+  const src = useMemo(() => `data:audio/mp3;base64,${song.base64}`, [song.base64]);
 
   return (
     <>
       <header className={styles.header}>
         <h2 className={styles.title}>{song.title}</h2>
-        <audio controls className={styles.audio}>
-          <source src={src} />
-        </audio>
+        <AudioPlayer src={src} />
       </header>
       {isEdit
         ? <EditAudioForm song={song} setSong={setSong} setIsEdit={setIsEdit} />
