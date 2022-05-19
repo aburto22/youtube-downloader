@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Spinner from '../Spinner';
 import { ISong } from '../../types';
 import { fetchSong } from '../../lib/youtube';
-import { getDispTime, secsToMins } from '../../lib/time';
+import { secsToMins } from '../../lib/time';
+import TimeInput from '../TimeInput';
 import styles from './styles.module.scss';
 
 interface EditAudioFormProps {
@@ -52,85 +53,15 @@ const EditAudioForm = ({ song, setSong, setIsEdit }: EditAudioFormProps) => {
     setSong(json.data);
   };
 
-  const handleChangeStart = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const time = {
-      ...start,
-      [e.target.name]: +e.currentTarget.value,
-    };
-
-    const secs = time.min * 60 + time.sec;
-    const secsEnd = end.min * 60 + end.sec;
-
-    if (time.min >= 0 && time.sec <= 60 && secs >= 0 && secs <= duration && secs < secsEnd) {
-      setStart(time);
-    }
-  };
-
-  const handleChangeEnd = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const time = {
-      ...end,
-      [e.target.name]: +e.currentTarget.value,
-    };
-
-    const secs = time.min * 60 + time.sec;
-    const secsStart = start.min * 60 + start.sec;
-
-    if (time.min >= 0 && time.sec <= 60 && secs > secsStart && secs <= duration && secs >= 0) {
-      setEnd(time);
-    }
-  };
-
   const buttonDisabled = loading;
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <p className={styles.audioDuration}>
-        {`Audio duration: ${secsToMins(duration)} min(s)`}
+        {`Audio duration: ${secsToMins(duration)} ${duration > 60 ? 'min(s)' : 'sec(s)'}`}
       </p>
-      <label htmlFor="start" className={styles.label}>
-        <p className={styles.labelText}>Start:</p>
-        <input
-          type="number"
-          name="min"
-          value={getDispTime(start.min)}
-          onChange={handleChangeStart}
-          className={styles.input}
-          disabled={loading}
-          required
-        />
-        <p className={styles.timeSeparator}>:</p>
-        <input
-          type="number"
-          name="sec"
-          value={getDispTime(start.sec)}
-          onChange={handleChangeStart}
-          className={`${styles.input} ${styles.inputLast}`}
-          disabled={loading}
-          required
-        />
-      </label>
-      <label htmlFor="end" className={styles.label}>
-        <p className={styles.labelText}>End:</p>
-        <input
-          type="number"
-          name="min"
-          value={getDispTime(end.min)}
-          onChange={handleChangeEnd}
-          className={styles.input}
-          disabled={loading}
-          required
-        />
-        <p className={styles.timeSeparator}>:</p>
-        <input
-          type="number"
-          name="sec"
-          value={getDispTime(end.sec)}
-          onChange={handleChangeEnd}
-          className={`${styles.input} ${styles.inputLast}`}
-          disabled={loading}
-          required
-        />
-      </label>
+      <TimeInput label="start" time={start} other={end} duration={duration} setTime={setStart} loading={loading} />
+      <TimeInput label="end" time={end} other={start} duration={duration} setTime={setEnd} loading={loading} />
       <button
         type="submit"
         className={`${styles.submitButton} ${buttonDisabled ? styles.submitButtonDisabled : styles.submitButtonActive}`}
