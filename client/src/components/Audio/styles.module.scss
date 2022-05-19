@@ -10,26 +10,41 @@
 .audio {
   display: block;
   margin: 0 auto 2rem;
+  max-width: 100%;
 }
 
 .downloadLink {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0.5rem 1rem;
   background-color: $yale-blue;
   margin: 0 auto;
   border-radius: 0.5rem;
-  border: 2px solid transparent;
   width: max-content;
   margin-bottom: 0.5rem;
   color: $baby-powder;
+  height: 3rem;
 }
 
 .downloadLink:hover {
   opacity: 0.9;
 }
 
-.audio {
-  max-width: 100%;
+.editButton {
+  display: block;
+  padding: 0.5rem 1rem;
+  background-color: $teal;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  color: $baby-powder;
+  width: max-content;
+  height: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.editButton:hover {
+  opacity: 0.9;
 }
 
 .restartButton {
@@ -38,10 +53,11 @@
   background-color: $isabelline;
   margin: 0 auto;
   border-radius: 0.5rem;
-  border: 2px solid $yale-blue;
   color: $yale-blue;
+  border: 1px solid $yale-blue;
   width: max-content;
   font-weight: 600;
+  height: 3rem;
 }
 
 .restartButton:hover {

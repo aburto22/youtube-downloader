@@ -1,0 +1,61 @@
+@import '../../variables.scss';
+
+.form {
+  margin: 0 auto 0.5rem;
+  max-width: 20rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.audioDuration {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  width: 100%;
+}
+
+.label {
+  width: 40%;
+  margin: 0 0.5rem;
+}
+
+.labelText {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.2rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid $baby-powder;
+  background-color: $baby-powder;
+}
+
+.submitButton {
+  display: block;
+  padding: 0.5rem 1rem;
+  background-color: $yale-blue;
+  margin: 1.5rem auto 0;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  height: 3rem;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $baby-powder;
+}
+
+.submitButtonActive:hover {
+  opacity: 0.9;
+}
+
+.submitButtonDisabled {
+  opacity: 0.8;
+  cursor: default;
+}

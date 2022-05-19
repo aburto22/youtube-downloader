@@ -6,10 +6,11 @@ import base64
 import json
 
 title = sys.argv[1]
-base64audio = sys.argv[2]
-bitrate = sys.argv[3]
-start = int(sys.argv[4])
-end = int(sys.argv[5])
+bitrate = sys.argv[2]
+start = int(sys.argv[3]) * 1000
+end = int(sys.argv[4]) * 1000
+
+base64audio = input()
 
 audio_buffer = io.BytesIO(base64.b64decode(base64audio))
 audio_buffer.seek(0)

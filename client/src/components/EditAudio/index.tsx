@@ -1,21 +1,18 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react';
+import EditAudioForm from '../EditAudioForm';
 import { ISong } from '../../types';
 import styles from './styles.module.scss';
 
-interface AudioProps {
+interface EditAudioProps {
   song: ISong;
   setSong: React.Dispatch<React.SetStateAction<ISong | null>>;
   setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Audio = ({ song, setSong, setIsEdit }: AudioProps) => {
-  const handleClickRestart = () => {
+const EditAudio = ({ song, setSong, setIsEdit }: EditAudioProps) => {
+  const handleClick = () => {
     setSong(null);
-  };
-
-  const handleClickEdit = () => {
-    setIsEdit(true);
   };
 
   const src = `data:audio/mp3;base64,${song.base64}`;
@@ -26,11 +23,10 @@ const Audio = ({ song, setSong, setIsEdit }: AudioProps) => {
       <audio controls className={styles.audio}>
         <source src={src} />
       </audio>
-      <button type="button" onClick={handleClickEdit} className={styles.editButton}>Edit song</button>
-      <a href={src} download={`${song.title}.mp3`} className={styles.downloadLink}>Download song</a>
-      <button type="button" onClick={handleClickRestart} className={styles.restartButton}>Convert another song</button>
+      <EditAudioForm song={song} setSong={setSong} setIsEdit={setIsEdit} />
+      <button type="button" onClick={handleClick} className={styles.restartButton}>Convert another song</button>
     </>
   );
 };
 
-export default Audio;
+export default EditAudio;
