@@ -63,26 +63,28 @@ const EditAudioForm = ({ song, setSong, setIsEdit }: EditAudioFormProps) => {
   const buttonDisabled = loading;
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      {errorMessage && (
-        <div className={styles.errorContainer}>
-          <h3 className={styles.errorTitle}>Error:</h3>
-          <p className={styles.errorMessage}>{errorMessage}</p>
-        </div>
-      )}
-      <h3 className={styles.audioDuration}>
-        {`Audio duration: ${secsToMins(duration)} ${duration > 60 ? 'min(s)' : 'sec(s)'}`}
-      </h3>
-      <TimeInput label="start" time={start} other={end} duration={duration} setTime={setStart} loading={loading} />
-      <TimeInput label="end" time={end} other={start} duration={duration} setTime={setEnd} loading={loading} />
-      <button
-        type="submit"
-        className={`${styles.submitButton} ${buttonDisabled ? styles.submitButtonDisabled : styles.submitButtonActive}`}
-        disabled={buttonDisabled}
-      >
-        {loading ? <Spinner /> : 'Save edit'}
-      </button>
-    </form>
+    <main className={styles.main}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        {errorMessage && (
+          <div className={styles.errorContainer}>
+            <h3 className={styles.errorTitle}>Error:</h3>
+            <p className={styles.errorMessage}>{errorMessage}</p>
+          </div>
+        )}
+        <h3 className={styles.audioDuration}>
+          {`Audio duration: ${secsToMins(duration)} ${duration > 60 ? 'min(s)' : 'sec(s)'}`}
+        </h3>
+        <TimeInput label="start" time={start} other={end} duration={duration} setTime={setStart} loading={loading} />
+        <TimeInput label="end" time={end} other={start} duration={duration} setTime={setEnd} loading={loading} />
+        <button
+          type="submit"
+          className={`${styles.submitButton} ${buttonDisabled ? styles.submitButtonDisabled : styles.submitButtonActive}`}
+          disabled={buttonDisabled}
+        >
+          {loading ? <Spinner /> : 'Save edit'}
+        </button>
+      </form>
+    </main>
   );
 };
 

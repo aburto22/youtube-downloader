@@ -1,7 +1,11 @@
 @import '../../variables.scss';
 
+.main {
+  margin-bottom: 2rem;
+}
+
 .form {
-  margin: 0 auto 0.5rem;
+  margin: 0 auto;
   max-width: 25rem;
   display: flex;
   flex-wrap: wrap;
