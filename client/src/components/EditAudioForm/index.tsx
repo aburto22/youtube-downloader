@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Spinner from '../Spinner';
 import { ISong } from '../../types';
 import { fetchSong } from '../../lib/youtube';
-import { secsToMins } from '../../lib/time';
+import { secsToMins, checkSongHasChanged } from '../../lib/time';
 import TimeInput from '../TimeInput';
 import styles from './styles.module.scss';
 
@@ -21,9 +21,15 @@ const EditAudioForm = ({ song, setSong, setIsEdit }: EditAudioFormProps) => {
     min: Math.floor(duration / 60),
   });
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!checkSongHasChanged(start, end, duration)) {
+      setIsEdit(false);
+      return;
+    }
 
     const data = {
       title: song.title,
@@ -43,12 +49,13 @@ const EditAudioForm = ({ song, setSong, setIsEdit }: EditAudioFormProps) => {
       body: JSON.stringify(data),
     });
 
-    setLoading(false);
-
     if (json.status === 'error') {
+      setLoading(false);
+      setErrorMessage(`${json.code}: ${json.message}`);
       return;
     }
 
+    setLoading(false);
     setIsEdit(false);
     setSong(json.data);
   };
@@ -57,9 +64,15 @@ const EditAudioForm = ({ song, setSong, setIsEdit }: EditAudioFormProps) => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <p className={styles.audioDuration}>
+      {errorMessage && (
+        <div className={styles.errorContainer}>
+          <h3 className={styles.errorTitle}>Error:</h3>
+          <p className={styles.errorMessage}>{errorMessage}</p>
+        </div>
+      )}
+      <h3 className={styles.audioDuration}>
         {`Audio duration: ${secsToMins(duration)} ${duration > 60 ? 'min(s)' : 'sec(s)'}`}
-      </p>
+      </h3>
       <TimeInput label="start" time={start} other={end} duration={duration} setTime={setStart} loading={loading} />
       <TimeInput label="end" time={end} other={start} duration={duration} setTime={setEnd} loading={loading} />
       <button

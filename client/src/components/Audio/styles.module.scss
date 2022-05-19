@@ -1,5 +1,9 @@
 @import '../../variables.scss';
 
+.header {
+  margin-bottom: 2rem;
+}
+
 .title {
   text-align: center;
   font-size: 1.5rem;
@@ -9,42 +13,15 @@
 
 .audio {
   display: block;
-  margin: 0 auto 2rem;
+  margin: 0 auto;
   max-width: 100%;
 }
 
-.downloadLink {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  background-color: $yale-blue;
+.footer {
+  border-top: 1px solid $dark-gray;
+  padding-top: 1.5rem;
+  max-width: 20rem;
   margin: 0 auto;
-  border-radius: 0.5rem;
-  width: max-content;
-  margin-bottom: 0.5rem;
-  color: $baby-powder;
-  height: 3rem;
-}
-
-.downloadLink:hover {
-  opacity: 0.9;
-}
-
-.editButton {
-  display: block;
-  padding: 0.5rem 1rem;
-  background-color: $teal;
-  margin: 0 auto;
-  border-radius: 0.5rem;
-  color: $baby-powder;
-  width: max-content;
-  height: 3rem;
-  margin-bottom: 0.5rem;
-}
-
-.editButton:hover {
-  opacity: 0.9;
 }
 
 .restartButton {

@@ -1,0 +1,38 @@
+@import '../../variables.scss';
+
+.main {
+  margin-bottom: 1.5rem;
+}
+
+.editButton {
+  display: block;
+  padding: 0.5rem 1rem;
+  background-color: $teal;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  color: $baby-powder;
+  width: max-content;
+  height: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.editButton:hover {
+  opacity: 0.9;
+}
+
+.downloadLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: $yale-blue;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  width: max-content;
+  color: $baby-powder;
+  height: 3rem;
+}
+
+.downloadLink:hover {
+  opacity: 0.9;
+}

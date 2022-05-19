@@ -17,3 +17,8 @@ export interface IFetchError {
 }
 
 export type IFetchReturn = IFetchSuccess | IFetchError;
+
+export interface ITime {
+  min: number;
+  sec: number;
+}

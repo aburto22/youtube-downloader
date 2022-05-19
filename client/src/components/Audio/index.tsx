@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react';
 import { ISong } from '../../types';
+import DownloadAudio from '../DownloadAudio';
 import styles from './styles.module.scss';
 
 interface AudioProps {
@@ -14,21 +15,20 @@ const Audio = ({ song, setSong, setIsEdit }: AudioProps) => {
     setSong(null);
   };
 
-  const handleClickEdit = () => {
-    setIsEdit(true);
-  };
-
   const src = `data:audio/mp3;base64,${song.base64}`;
 
   return (
     <>
-      <h2 className={styles.title}>{song.title}</h2>
-      <audio controls className={styles.audio}>
-        <source src={src} />
-      </audio>
-      <button type="button" onClick={handleClickEdit} className={styles.editButton}>Edit song</button>
-      <a href={src} download={`${song.title}.mp3`} className={styles.downloadLink}>Download song</a>
-      <button type="button" onClick={handleClickRestart} className={styles.restartButton}>Convert another song</button>
+      <header className={styles.header}>
+        <h2 className={styles.title}>{song.title}</h2>
+        <audio controls className={styles.audio}>
+          <source src={src} />
+        </audio>
+      </header>
+      <DownloadAudio song={song} setIsEdit={setIsEdit} src={src} />
+      <footer className={styles.footer}>
+        <button type="button" onClick={handleClickRestart} className={styles.restartButton}>Convert another song</button>
+      </footer>
     </>
   );
 };
