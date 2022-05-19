@@ -2,10 +2,9 @@ from pytube import YouTube
 import sys
 import io
 from pydub import AudioSegment
-import base64
-import json
+from pydub.utils import mediainfo
 
-youtube_url = sys.argv[1]
+youtube_url = 'https://www.youtube.com/watch?v=IMB-R0chvf0&ab_channel=Bricolagedestoutespetitesgrenouilles'
 
 try:
   yt = YouTube(youtube_url)
@@ -24,19 +23,6 @@ video_track.stream_to_buffer(video_buffer)
 video_buffer.seek(0)
 
 audio = AudioSegment.from_file(video_buffer, format=extension)
-audio_buffer = io.BytesIO()
-audio.export(audio_buffer, format='mp3', bitrate=bitrate)
-
-audio_base64 = base64.b64encode(audio_buffer.getvalue()).decode('ascii')
-audio_src = f'data:audio/mp3;base64,{audio_base64}'
-
-audio_title = f'{video_track.title}.mp3'
-
-new_song = {
-  "title": audio_title,
-  "src": audio_src
-}
-
-print(json.dumps(new_song))
-
-sys.stdout.flush()
+audio.export(title, format='mp3', bitrate=bitrate)
+info = mediainfo(title)
+print(info)
