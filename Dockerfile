@@ -4,7 +4,7 @@ RUN apt-get update
 
 RUN apt-get upgrade -y
 
-RUN apt-get install python3 python3-pip apt-get install ffmpeg libavcodec-extra -y
+RUN apt-get install python3 python3-pip ffmpeg libavcodec-extra -y
 
 WORKDIR /app/python
 
