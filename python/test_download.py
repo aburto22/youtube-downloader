@@ -4,7 +4,7 @@ import io
 from pydub import AudioSegment
 from pydub.utils import mediainfo
 
-youtube_url = 'https://www.youtube.com/watch?v=JGwWNGJdvx8'
+youtube_url = 'https://www.youtube.com/watch?v=rUWxSEwctFU&ab_channel=IanRushton'
 
 try:
   yt = YouTube(youtube_url)
