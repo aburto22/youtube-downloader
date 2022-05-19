@@ -1,6 +1,8 @@
 export interface ISong {
   title: string;
-  src: string;
+  base64: string;
+  bitrate: string;
+  duration: number;
 }
 
 export interface IFetchSuccess {

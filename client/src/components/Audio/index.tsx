@@ -9,19 +9,19 @@ interface AudioProps {
 }
 
 const Audio = ({ song, setSong }: AudioProps) => {
-  const title = song.title.split('.').slice(0, -1).join('');
-
   const handleClick = () => {
     setSong(null);
   };
 
+  const src = `data:audio/mp3;base64,${song.base64}`;
+
   return (
     <>
-      <h2 className={styles.title}>{title}</h2>
+      <h2 className={styles.title}>{song.title}</h2>
       <audio controls className={styles.audio}>
-        <source src={song.src} />
+        <source src={src} />
       </audio>
-      <a href={song.src} download={song.title} className={styles.downloadLink}>Download song</a>
+      <a href={src} download={`${song.title}.mp3`} className={styles.downloadLink}>Download song</a>
       <button type="button" onClick={handleClick} className={styles.restartButton}>Convert another song</button>
     </>
   );
