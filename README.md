@@ -1,7 +1,7 @@
 # youtube downloader
 > A simple website created with React and TypeScript for the front-end, and Express for the back-end. By using python (together with Node),this allows users to download an mp3 file from youtube.
 >
-> The app is hosted in heroku: [_Click here to take a look._](https://get-from-youtube.herokuapp.com)
+> The app is hosted in railwail: [_Click here to take a look._](https://youtube-downloader.up.railway.app/)
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -34,7 +34,7 @@ Download audio from a youtube video in mp3, so I can listen to it locally withou
 
 ### Deployment and hosting
 - Docker container
-- Heroku hosting
+- Railway hosting
 - GitHub actions for CI/CD pipeline
 
 

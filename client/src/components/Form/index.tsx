@@ -42,7 +42,7 @@ const Form = ({ setSong }: FormProps) => {
     setErrorMessage('');
   };
 
-  const youtubeRegex = /(?:https?:\/\/)?(www\.)?youtube\.com\/watch\?(?:.*&)?v=-?[A-Za-z0-9]+(?:&|\b)/;
+  const youtubeRegex = /(?:https?:\/\/)?(www\.)?youtube\.com\/watch\?(?:.*&)?v=-?[_A-Za-z0-9]+(?:&|\b)/;
 
   const urlValid = url.length === 0 || youtubeRegex.test(url);
 
