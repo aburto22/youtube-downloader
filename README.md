@@ -35,7 +35,6 @@ Download audio from a youtube video in mp3, so I can listen to it locally withou
 ### Deployment and hosting
 - Docker container
 - Railway hosting
-- GitHub actions for CI/CD pipeline
 
 
 ## Features
